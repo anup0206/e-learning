@@ -17,7 +17,7 @@ export default function LandingPage() {
      
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
+      <section className="bg-gradient-to-b from-blue-50 to-white min-h-screen md:pt-12">
         <div className="max-w-7xl mx-auto px-4 min-h-screen flex items-center justify-between flex-col-reverse md:flex-row gap-16  pb-12">
           <motion.div
             className="flex-1"
@@ -35,7 +35,7 @@ export default function LandingPage() {
             <p className="text-md text-gray-500 mt-4 max-w-xl">
               Whether you're advancing your career or exploring a new field, EduFlow makes education accessible, engaging, and effective.
             </p>
-            <div className="mt-12 flex flex-wrap gap-12">
+            <div className="mt-12 flex flex-wrap gap-12 md:items-center md:justify-center">
               <Link to="/signup">
                 <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-lg shadow-md transition hover:scale-105">
                   Get Started
@@ -121,7 +121,7 @@ export default function LandingPage() {
       </motion.section>
 
 
-      {/* Footer */}
+
       
     </main>
   );
