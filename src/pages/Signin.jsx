@@ -26,7 +26,7 @@ const Signin = () => {
             const response = await axios.post("https://blog-hqx2.onrender.com/user/login", values);
             const { token, user } = response.data;
 
-            login(token, user); // Call context login
+            signin(token, user); // Call context login
             toast.success("Login successful!");
             navigate("/dashboard");
         } catch (error) {
