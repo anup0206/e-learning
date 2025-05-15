@@ -14,24 +14,8 @@ const fadeUp = {
 export default function LandingPage() {
   return (
     <main className="font-sans text-gray-800 bg-white">
-      {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-blue-600">EduFlow</h1>
-          <nav className="space-x-6 text-gray-700 text-sm md:text-base">
-            <Link to="/">Home</Link>
-            <Link to="/signin" className="hover:text-blue-600">
-              Sign In
-            </Link>
-            <Link to="/signup">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm">
-                Get Started
-              </Button>
-            </Link>
-          </nav>
-        </div>
-      </header>
-
+     
+      
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-blue-50 to-white min-h-screen">
         <div className="max-w-7xl mx-auto px-4 min-h-screen flex items-center justify-between flex-col-reverse md:flex-row gap-16  pb-12">
@@ -138,22 +122,7 @@ export default function LandingPage() {
 
 
       {/* Footer */}
-      <footer className="bg-gray-100 py-8">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
-          <p>© {new Date().getFullYear()} EduFlow. All rights reserved.</p>
-          <div className="space-x-4 mt-2 md:mt-0">
-            <Link to="/" className="hover:text-blue-600">
-              Home
-            </Link>
-            <Link to="/privacy" className="hover:text-blue-600">
-              Privacy
-            </Link>
-            <Link to="/terms" className="hover:text-blue-600">
-              Terms
-            </Link>
-          </div>
-        </div>
-      </footer>
+      
     </main>
   );
 }
