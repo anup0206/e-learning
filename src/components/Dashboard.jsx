@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between p-10 mt-8 h-screen">
+    <section className="flex flex-col md:flex-row items-center justify-between p-10 mt-8 ">
       {/* Left */}
       <div className="flex-1 space-y-6">
         <h1 className="text-5xl font-bold">
@@ -15,7 +15,7 @@ const Dashboard = () => {
         </p>
 
         <div className="flex gap-4">
-          <Link to="/explore">
+          <Link to="/explorecourse">
             <button className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
               Explore Courses
             </button>

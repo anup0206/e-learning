@@ -1,117 +1,63 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import axios from 'axios'; // For making HTTP requests
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ExploreCourse = () => {
-  const [courses, setCourses] = useState([]);
-  const [filteredCourses, setFilteredCourses] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const { user } = useContext(AuthContext);
+  // State to store fetched course data
+  const [getCourse, setGetCourse] = useState([]);
 
-  // Fetch all courses
-  const fetchCourses = async () => {
-    setLoading(true);
-    setError('');
+  // Fetch course data from API
+  const fetchCourse = async () => {
     try {
-      const res = await fetch('https://blog-1rng.onrender.com/mycourse');
-      if (!res.ok) throw new Error('Failed to fetch courses');
-      const data = await res.json();
-      setCourses(data);
-      setFilteredCourses(data); // Default view
-    } catch (err) {
-      setError(err.message || 'Something went wrong');
-    } finally {
-      setLoading(false);
+      const response = await axios.get('https://blog-1rng.onrender.com/mycourse');
+      const data = response.data;
+      setGetCourse(data);
+    } catch (error) {
+      console.error("Failed to fetch data of course");
     }
   };
 
-  // Fetch categories
-  const fetchCategories = async () => {
-    try {
-      const res = await fetch('https://blog-1rng.onrender.com/mycourse/category/getCoursesByCategory');
-      if (!res.ok) throw new Error('Failed to fetch categories');
-      const data = await res.json();
-      setCategories(data);
-    } catch (err) {
-      console.error('Category fetch error:', err);
-    }
-  };
-
-
+  // Run fetchCourse once on mount
   useEffect(() => {
-    fetchCourses();
-    fetchCategories();
-    createCourse();
+    fetchCourse();
   }, []);
 
-  // Handle filter by category
-  const handleFilter = (category) => {
-    setSelectedCategory(category);
-    if (category === 'All') {
-      setFilteredCourses(courses);
-    } else {
-      const filtered = courses.filter(course => course.category?.toLowerCase() === category.toLowerCase());
-      setFilteredCourses(filtered);
-    }
-  };
-
   return (
-    <div className="p-8 pt-20 h-screen">
-      <h1 className="text-3xl font-bold mb-6">Explore Courses</h1>
-
-      {/* Error + Loading */}
-      {loading && <p className="text-purple-600">Loading courses...</p>}
-      {error && <p className="text-red-600 font-semibold">{error}</p>}
-
-      {/* Category Filter Tabs */}
-      <div className="flex flex-wrap gap-3 mb-8">
-        <button
-          onClick={() => handleFilter('All')}
-          className={`px-4 py-2 rounded ${
-            selectedCategory === 'All' ? 'bg-purple-600 text-white' : 'bg-gray-200'
-          }`}
-        >
-          All
-        </button>
-        {categories.length === 0 && (
-          <span className="text-gray-500 italic">No categories available</span>
-        )}
-        {categories.map((cat, i) => (
-          <button
-            key={i}
-            onClick={() => handleFilter(cat)}
-            className={`px-4 py-2 rounded ${
-              selectedCategory === cat ? 'bg-purple-600 text-white' : 'bg-gray-200'
-            }`}
+    <section className="pt-[100px] px-6 pb-20 min-h-screen bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
+          <h1 className="text-3xl font-extrabold text-gray-800">Explore Courses</h1>
+          <Link
+            to="/createcourse"
+            className="inline-block px-6 py-2 text-white font-medium bg-blue-600 hover:bg-blue-700 rounded-xl shadow transition duration-200"
           >
-            {cat}
-          </button>
-        ))}
-      </div>
+            + Create Course
+          </Link>
+        </div>
 
-      {/* No courses found in selected category */}
-      {!loading && !error && filteredCourses.length === 0 && (
-        <p className="text-center text-gray-500 text-xl">🚫 No courses found in "{selectedCategory}".</p>
-      )}
-
-      {/* Course Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filteredCourses.map((course) => (
-          <div key={course.id} className="border p-4 rounded shadow hover:shadow-md">
-            <img
-              src={course.image || 'https://via.placeholder.com/300x180.png?text=Course+Image'}
-              alt={course.title}
-              className="w-full h-40 object-cover rounded mb-3"
-            />
-            <h2 className="text-xl font-bold text-purple-700">{course.title}</h2>
-            <p className="text-sm text-gray-600 my-2">{course.description}</p>
-            <p className="text-yellow-500">⭐ {course.rating || '4.5'} / 5</p>
-          </div>
-        ))}
+        {/* Course list */}
+        {getCourse.length > 0 ? (
+          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {getCourse.map((course, index) => (
+              <li
+                key={index}
+                className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition duration-300"
+              >
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{course.title}</h3>
+                <p className="text-gray-700 text-sm mb-3">{course.description}</p>
+                <div className="text-sm text-gray-500 space-y-1">
+                  <p><span className="font-medium text-gray-600">Faculty:</span> {course.faculty}</p>
+                  <p><span className="font-medium text-gray-600">Created:</span> {new Date(course.createdAt).toLocaleDateString()}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-center text-gray-600 text-lg mt-12">Loading courses...</p>
+        )}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -12,6 +12,7 @@ import ExploreCourse from "./components/ExploreCourse";
 import Categories from "./components/Categories"; // Ensure this exists
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthContext } from "./context/AuthContext";
+import CreateCourse from "./components/CreateCourse";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -42,7 +43,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/explore" element={<ExploreCourse />} />
+        <Route path="/explorecourse" element={<ExploreCourse />} />
+        <Route path="/createcourse" element={<CreateCourse />} />
         <Route path="/categories" element={<Categories />} />
       </Routes>
       <Footer />
