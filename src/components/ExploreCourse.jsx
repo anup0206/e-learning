@@ -11,6 +11,7 @@ const ExploreCourse = () => {
     try {
       const response = await axios.get('https://blog-1rng.onrender.com/mycourse');
       const data = response.data;
+      console.log(data)
       setGetCourse(data);
     } catch (error) {
       console.error("Failed to fetch data of course");

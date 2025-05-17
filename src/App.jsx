@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Dashboard from "./components/Dashboard";
 import ExploreCourse from "./components/ExploreCourse";
-import Categories from "./components/Categories"; // Ensure this exists
+import Categories from "./components/Categories"; 
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthContext } from "./context/AuthContext";
 import CreateCourse from "./components/CreateCourse";
