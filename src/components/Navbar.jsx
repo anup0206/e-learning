@@ -46,7 +46,7 @@ const Navbar = () => {
 
   const navItems = [
     { title: "All Courses", path: "/explorecourse" },
-    { title: "Categories", path: "/viewcategory" },
+    { title: "Categories", path: "/categories" },
     { title: "About Us", path: "/aboutus" },
   ];
 
