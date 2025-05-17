@@ -45,8 +45,8 @@ const Navbar = () => {
   );
 
   const navItems = [
-    { title: "All Courses", path: "/allcourses" },
-    { title: "Categories", path: "/categories" },
+    { title: "All Courses", path: "/explorecourse" },
+    { title: "Categories", path: "/viewcategory" },
     { title: "About Us", path: "/aboutus" },
   ];
 
@@ -71,8 +71,10 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Brand Logo */}
         <div className="flex items-center gap-2 text-xl md:text-2xl font-bold text-blue-600">
+          <Link to={'/dashboard'}>
           <span className="bg-blue-500 text-white px-2 py-1 rounded-full">ED</span>
           EduLearn
+          </Link>
         </div>
 
         {/* Hamburger icon for mobile */}

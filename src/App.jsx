@@ -13,6 +13,8 @@ import Categories from "./components/Categories";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthContext } from "./context/AuthContext";
 import CreateCourse from "./components/CreateCourse";
+import FeatureCourse from "./components/FeatureCourses";
+import Aboutus from "./components/Aboutus"
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -45,7 +47,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/explorecourse" element={<ExploreCourse />} />
         <Route path="/createcourse" element={<CreateCourse />} />
+        <Route path="/featurecourse" element={<FeatureCourse />}/>
         <Route path="/categories" element={<Categories />} />
+        <Route path="/aboutus" element={<Aboutus />} />
+        
       </Routes>
       <Footer />
     </Router>
