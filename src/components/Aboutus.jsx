@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: (i = 1) => ({
+  visible: (custom) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.3, duration: 0.6, ease: "easeOut" },
+    transition: { delay: custom * 0.3, duration: 0.6, ease: "easeOut" },
   }),
 };
 
@@ -35,7 +35,7 @@ const Aboutus = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-white via-gray-50 to-white py-20">
+    <section className="bg-gradient-to-tr from-indigo-100 via-white to-blue-100 py-20">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -44,9 +44,11 @@ const Aboutus = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
+          custom={0}
         >
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 relative inline-block">
             About Our E-Learning Platform
+            <span className="block h-1 w-32 mx-auto bg-gradient-to-r from-indigo-500 to-blue-500 mt-3 rounded-full animate-pulse" />
           </h2>
           <p className="mt-6 text-lg text-gray-700 max-w-2xl mx-auto">
             Empowering global learners with boundless access to education—anywhere, anytime.
@@ -78,7 +80,7 @@ const Aboutus = () => {
           />
         </motion.div>
 
-        {/* Values Section */}
+        {/* Core Values Section */}
         <motion.div
           className="mt-24"
           initial="hidden"
@@ -88,11 +90,13 @@ const Aboutus = () => {
           custom={2}
         >
           <h3 className="text-3xl font-semibold text-gray-800 text-center">Our Core Values</h3>
+          <span className="block h-1 w-32 mx-auto bg-gradient-to-r from-indigo-500 to-blue-500 mt-3 rounded-full animate-pulse" />
+
           <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                className="text-center px-6 py-8 bg-white rounded-xl shadow-md hover:shadow-xl transition"
+                className="backdrop-blur-md bg-white/70 border border-gray-200/70 text-center px-6 py-8 rounded-xl shadow-lg hover:shadow-2xl transition"
                 variants={fadeInUp}
                 custom={index + 3}
               >
