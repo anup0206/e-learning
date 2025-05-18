@@ -32,18 +32,18 @@ const CoursePage = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <div>
-          <h1 className="text-4xl font-extrabold text-gray-900 tracking-wide">
-            Featured Courses
-          </h1>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6 border-b-4 border-blue-600 inline-block pb-2 italic">
+         Explore Course
+      </h2>
           <p className="text-gray-600 mt-2 max-w-md">
             Handpicked courses by our team to help you get started
           </p>
         </div>
-        <Link
+         <Link
           to="/explorecourse"
-          className="text-indigo-600 hover:text-indigo-800 text-lg font-semibold transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 rounded"
+          className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-2 rounded-full font-semibold shadow-md hover:shadow-xl transition-all duration-300"
         >
-          View All Courses &rarr;
+          View All Courses →
         </Link>
       </div>
 

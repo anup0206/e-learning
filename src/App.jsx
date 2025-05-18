@@ -8,19 +8,22 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Dashboard from "./components/Dashboard";
-import ExploreCourse from "./pages/ExploreCourse";
-import ViewCategory from "./components/ViewCategory"; 
+import ExploreCourse from "./components/ExploreCourse";
+import ViewCategory from "./pages/ViewCategory";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthContext } from "./context/AuthContext";
 import CourseForm from "./components/CourseForm";
 import CoursePage from "./pages/CoursePage";
 import Aboutus from "./components/Aboutus"
 import EditCourse from "./pages/EditCourse"
+import HomePageCategories from "./components/HomePageCategories";
+
 
 function App() {
   const { user } = useContext(AuthContext);
 
   return (
+    
     <Router>
       <Navbar />
       <Routes>
@@ -46,16 +49,20 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
+
+
         <Route path="/explorecourse" element={<ExploreCourse />} />
         <Route path="/createcourse" element={<CourseForm />} />
-        <Route path="/coursepage" element={<CoursePage />}/>
-        <Route path="/edit/:id" element={<EditCourse/>} />
+        <Route path="/coursepage" element={<CoursePage />} />
+        <Route path="/edit/:id" element={<EditCourse />} />
 
 
         <Route path="/categories" element={<ViewCategory />} />
-                         
+        <Route path="/homepagecategories" element={<HomePageCategories />} />
+
+
         <Route path="/aboutus" element={<Aboutus />} />
-        
+
       </Routes>
       <Footer />
     </Router>

@@ -4,6 +4,7 @@ import image from "../assets/image.jpg";
 import { Link } from "react-router-dom";
 import CoursePage from "../pages/CoursePage";
 import { motion } from "framer-motion";
+import CategoryPage from "./HomePageCategories";
 
 const Dashboard = () => {
   const stats = [
@@ -79,6 +80,9 @@ const Dashboard = () => {
 
       {/* Featured Courses */}
       <CoursePage />
+
+      {/* Featured Category */}
+      <CategoryPage />
     </>
   );
 };
