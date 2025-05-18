@@ -17,13 +17,14 @@ import CoursePage from "./pages/CoursePage";
 import Aboutus from "./components/Aboutus"
 import EditCourse from "./pages/EditCourse"
 import HomePageCategories from "./components/HomePageCategories";
+import CategoryCourses from "./pages/CategoryCourses";
 
 
 function App() {
   const { user } = useContext(AuthContext);
 
   return (
-    
+
     <Router>
       <Navbar />
       <Routes>
@@ -59,6 +60,10 @@ function App() {
 
         <Route path="/categories" element={<ViewCategory />} />
         <Route path="/homepagecategories" element={<HomePageCategories />} />
+
+
+        <Route path="/category/:name" element={<CategoryCourses />} />
+
 
 
         <Route path="/aboutus" element={<Aboutus />} />
