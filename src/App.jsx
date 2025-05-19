@@ -51,18 +51,28 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
 
+       
+        <Route path="/explorecourse" element={
+           <ProtectedRoute>
+             <ExploreCourse />}
+           </ProtectedRoute>/>
+          
+        <Route path="/createcourse" element={
+           <ProtectedRoute>
+             <CourseForm />}
+           </ProtectedRoute>/>
 
-        <Route path="/explorecourse" element={<ExploreCourse />} />
-        <Route path="/createcourse" element={<CourseForm />} />
-        <Route path="/coursepage" element={<CoursePage />} />
+          
+        <Route path="/coursepage" element={   <ProtectedRoute><CoursePage />}   </ProtectedRoute> />
         <Route path="/edit/:id" element={<EditCourse />} />
 
 
-        <Route path="/categories" element={<ViewCategory />} />
-        <Route path="/homepagecategories" element={<HomePageCategories />} />
+        <Route path="/categories" element={   <ProtectedRoute><ViewCategory />}    </ProtectedRoute>/>
+          
+        <Route path="/homepagecategories" element={   <ProtectedRoute><HomePageCategories />}   </ProtectedRoute> />
 
 
-        <Route path="/category/:name" element={<CategoryCourses />} />
+        <Route path="/category/:name" element={   <ProtectedRoute><CategoryCourses />}   </ProtectedRoute> />
 
 
 
