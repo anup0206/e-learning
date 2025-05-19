@@ -148,12 +148,12 @@ const Navbar = () => {
     : [
         {
           title: "Login",
-          path: "/login",
+          path: "/signin",
           className: "text-blue-600 hover:bg-blue-100",
         },
         {
           title: "Register",
-          path: "/register",
+          path: "/signup",
           className: "bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-500",
         },
       ];
